@@ -1,4 +1,4 @@
-import type { ExampleReplicant } from '@nodecg-vue-ts-template/types/schemas';
+import type { ExampleReplicant } from '@mysrtafes2022-layouts/types/schemas';
 import clone from 'clone';
 import type { ReplicantBrowser } from 'nodecg/types/browser';
 import Vue from 'vue';

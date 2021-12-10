@@ -1,17 +1,17 @@
 {
-  "name": "nodecg-vue-ts-template",
+  "name": "mysrtafes2022-layouts",
   "version": "1.0.0",
-  "description": "Template for NodeCG bundles that use Vue.js and TypeScript.",
-  "homepage": "https://github.com/zoton2/nodecg-vue-ts-template#readme",
+  "description": "The on-stream layouts for Mystery Dungeon RTA FES 3",
+  "homepage": "https://oengus.io/marathon/mysrtafes3",
   "bugs": {
-    "url": "https://github.com/zoton2/nodecg-vue-ts-template/issues"
+    "url": "https://github.com/yagamuu/mysrtafes2022-layouts/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zoton2/nodecg-vue-ts-template.git"
+    "url": "git+https://github.com/yagamuu/mysrtafes2022-layouts.git"
   },
   "license": "MIT",
-  "author": "zoton2",
+  "author": "yagamuu",
   "scripts": {
     "autofix": "run-s autofix:*",
     "autofix:browser": "eslint --fix --ext .ts,.vue src/dashboard && eslint --fix --ext .ts,.vue src/graphics && eslint --fix --ext .ts src/browser_shared",

@@ -1,5 +1,5 @@
-import { replicantModule, ReplicantModule, ReplicantTypes } from '@nodecg-vue-ts-template/browser_shared/replicant_store';
-import { ExampleReplicant } from '@nodecg-vue-ts-template/types/schemas';
+import { replicantModule, ReplicantModule, ReplicantTypes } from '@mysrtafes2022-layouts/browser_shared/replicant_store';
+import { ExampleReplicant } from '@mysrtafes2022-layouts/types/schemas';
 import clone from 'clone';
 import Vue from 'vue';
 import Vuex, { Store } from 'vuex';
