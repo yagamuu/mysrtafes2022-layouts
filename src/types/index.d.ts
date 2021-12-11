@@ -1,1 +1,2 @@
-export * from './ExampleType';
+export * from './Alert';
+export * from './Dialog';

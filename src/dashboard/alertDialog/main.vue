@@ -1,0 +1,81 @@
+<template>
+  <v-app>
+    <component
+      :is="currentComponent"
+      @confirm="close(true)"
+      @dismiss="close(false)"
+    />
+  </v-app>
+</template>
+
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+import { VueConstructor } from 'vue';
+import { Dialog, Alert } from '@mysrtafes2022-layouts/types';
+import OverwriteInformationConfirm from './components/OverwriteInformationConfirm.vue';
+
+@Component
+export default class extends Vue {
+  dialog!: Dialog;
+  currentComponent: VueConstructor | null = null;
+  callbackFunc: ((confirm: boolean) => void) | null = null;
+
+  open(
+    opts: { name: Alert.Name, func?: (confirm: boolean) => void },
+  ): void {
+    // Waits for dialog to actually open before doing stuff.
+    this.dialog.open();
+    document.addEventListener('dialog-opened', () => {
+      this.currentComponent = ((name): VueConstructor | undefined => {
+        switch (name) {
+          case 'OverwriteInformationConfirm':
+            return OverwriteInformationConfirm;
+          default:
+            return undefined;
+        }
+      })(opts.name) || null;
+      this.callbackFunc = opts.func || null;
+    }, { once: true });
+    document.addEventListener('dialog-confirmed', this.confirm, { once: true });
+    document.addEventListener('dialog-dismissed', this.dismiss, { once: true });
+  }
+
+  close(confirm: boolean): void {
+    // Trigger callback function passed earlier if set.
+    if (this.callbackFunc) {
+      this.callbackFunc(confirm);
+    }
+    this.dialog._updateClosingReasonConfirmed(confirm); // eslint-disable-line no-underscore-dangle
+    this.dialog.close();
+    this.currentComponent = null;
+    this.callbackFunc = null;
+  }
+
+  confirm(): void {
+    document.removeEventListener('dialog-dismissed', this.dismiss);
+  }
+
+  dismiss(): void {
+    document.removeEventListener('dialog-confirmed', this.confirm);
+  }
+
+  mounted(): void {
+    this.dialog = nodecg.getDialog('alertDialog') as Dialog;
+
+    // Attaching this function to the window for easy access from dashboard panels.
+    (window as Window as Alert.Dialog).openDialog = (opts: {
+      name: Alert.Name,
+      func?: (confirm: boolean) => void,
+    }): void => this.open(opts);
+
+    // Small hack to make the NodeCG dialog look a little better for us.
+    const elem = this.dialog.getElementsByTagName('paper-dialog-scrollable')[0] as HTMLElement;
+    elem.style.marginBottom = '12px';
+
+    // Allow alerts to be arbitrarily triggered.
+    nodecg.listenFor('triggerAlert', (name) => {
+      this.open({ name });
+    });
+  }
+}
+</script>

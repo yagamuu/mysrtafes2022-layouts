@@ -94,6 +94,13 @@
         "title": "Setup Information",
         "file": "setupInformation.html",
         "width": 3
+      },
+      {
+        "name": "alertDialog",
+        "title": "",
+        "width": 3,
+        "file": "alertDialog.html",
+        "dialog": true
       }
     ],
     "graphics": [

@@ -3,11 +3,11 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "exampleProperty": {
+    "overwriteInformationText": {
       "type": "string"
     }
   },
   "required": [
-    "exampleProperty"
+    "overwriteInformationText"
   ]
 }

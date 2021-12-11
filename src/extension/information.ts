@@ -1,7 +1,11 @@
 import { v4 as uuid } from 'uuid';
 import { SetupInformation } from '@mysrtafes2022-layouts/types/schemas';
+import type { Configschema } from '@mysrtafes2022-layouts/types/schemas/configschema';
 import { get as nodecg } from './util/nodecg';
 import { informationArrayReplicant } from './util/replicants';
+
+// Access the bundle configuration with types.
+const config = nodecg().bundleConfig as Configschema;
 
 const createInformation = (text: string): void => {
   if (!informationArrayReplicant.value) { return; }
@@ -38,6 +42,17 @@ const deleteInformation = (id: string): void => {
   nodecg().log.info('Delete information');
 };
 
+const overwriteInformation = (): void => {
+  if (!informationArrayReplicant.value) { return; }
+
+  informationArrayReplicant.value = [{
+    id: uuid(),
+    text: config.overwriteInformationText,
+  }];
+
+  nodecg().log.info('Overwrite information');
+};
+
 nodecg().listenFor('createInformation', (data, ack) => {
   createInformation(data.text);
 
@@ -56,6 +71,14 @@ nodecg().listenFor('updateInformation', (data, ack) => {
 
 nodecg().listenFor('deleteInformation', (data, ack) => {
   deleteInformation(data.id);
+
+  if (ack && !ack.handled) {
+    ack(null);
+  }
+});
+
+nodecg().listenFor('overwriteInformation', (data, ack) => {
+  overwriteInformation();
 
   if (ack && !ack.handled) {
     ack(null);
