@@ -1,4 +1,10 @@
-import type { ExampleReplicant } from '@mysrtafes2022-layouts/types/schemas';
+/* eslint-disable max-len */
+import type { RunDataArray, Timer } from '@mysrtafes2022-layouts/types/schemas/speedcontrol';
+import type { SpeedcontrolCurrentRunIndex, SpeedcontrolUserAdditionArray, CommentatorArray } from '@mysrtafes2022-layouts/types/schemas/speedcontrolAdditions';
+import type { SpotifyPlayingTrack } from '@mysrtafes2022-layouts/types/schemas/nodecgSpotifyWidget';
+import { SetupInformationArray } from '@mysrtafes2022-layouts/types/schemas/setupInformationArray';
+import type { ActiveTweet } from '@mysrtafes2022-layouts/types/schemas/nodecgTwitterWidget';
+import type { Assets } from '@mysrtafes2022-layouts/types/schemas/assets';
 import clone from 'clone';
 import type { ReplicantBrowser } from 'nodecg/types/browser';
 import Vue from 'vue';
@@ -8,15 +14,45 @@ import { getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators'
 
 // Declaring replicants.
 export const reps: {
-  exampleReplicant: ReplicantBrowser<ExampleReplicant>;
+  runDataArrayReplicant: ReplicantBrowser<RunDataArray>;
+  timerReplicant: ReplicantBrowser<Timer>;
+  speedcontrolCurrentRunIndexReplicant: ReplicantBrowser<SpeedcontrolCurrentRunIndex>;
+  speedcontrolUserAdditionArrayReplicant: ReplicantBrowser<SpeedcontrolUserAdditionArray>;
+  commentatorArrayReplicant: ReplicantBrowser<CommentatorArray>;
+  spotifyPlayingTrackReplicant: ReplicantBrowser<SpotifyPlayingTrack>;
+  activeTweetReplicant: ReplicantBrowser<ActiveTweet>;
+  setupInformationArrayReplicant: ReplicantBrowser<SetupInformationArray>;
+  gameLayoutBgAssetsReplicant: ReplicantBrowser<Assets>;
+  setupLayoutBgAssetsReplicant: ReplicantBrowser<Assets>;
+  logoAssetsReplicant: ReplicantBrowser<Assets>;
   [k: string]: ReplicantBrowser<unknown>;
 } = {
-  exampleReplicant: nodecg.Replicant('exampleReplicant'),
+  runDataArrayReplicant: nodecg.Replicant('runDataArray', 'nodecg-speedcontrol'),
+  timerReplicant: nodecg.Replicant('timer', 'nodecg-speedcontrol'),
+  speedcontrolCurrentRunIndexReplicant: nodecg.Replicant('speedcontrolCurrentRunIndex', 'speedcontrol-additions'),
+  speedcontrolUserAdditionArrayReplicant: nodecg.Replicant('speedcontrolUserAdditionArray', 'speedcontrol-additions'),
+  commentatorArrayReplicant: nodecg.Replicant('commentatorArray', 'speedcontrol-additions'),
+  spotifyPlayingTrackReplicant: nodecg.Replicant('spotifyPlayingTrack', 'nodecg-spotify-widget'),
+  activeTweetReplicant: nodecg.Replicant('activeTweet', 'nodecg-twitter-widget'),
+  setupInformationArrayReplicant: nodecg.Replicant('setupInformationArray'),
+  gameLayoutBgAssetsReplicant: nodecg.Replicant('assets:gameLayoutBg'),
+  setupLayoutBgAssetsReplicant: nodecg.Replicant('assets:setupLayoutBg'),
+  logoAssetsReplicant: nodecg.Replicant('assets:logo'),
 };
 
 // All the replicant types.
 export interface ReplicantTypes {
-  exampleReplicant: ExampleReplicant;
+  runDataArrayReplicant: RunDataArray;
+  timerReplicant: Timer;
+  speedcontrolCurrentRunIndexReplicant: SpeedcontrolCurrentRunIndex;
+  speedcontrolUserAdditionArrayReplicant: SpeedcontrolUserAdditionArray;
+  commentatorArrayReplicant: CommentatorArray;
+  spotifyPlayingTrackReplicant: SpotifyPlayingTrack;
+  activeTweetReplicant: ActiveTweet;
+  setupInformationArrayReplicant: SetupInformationArray;
+  gameLayoutBgAssetsReplicant: Assets;
+  setupLayoutBgAssetsReplicant: Assets;
+  logoAssetsReplicant: Assets;
 }
 
 @Module({ name: 'ReplicantModule', namespaced: true })
