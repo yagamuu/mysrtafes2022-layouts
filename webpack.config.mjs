@@ -121,7 +121,7 @@ const config = (name) => {
           ],
         },
         {
-          test: /\.(woff(2)?|ttf|eot)$/,
+          test: /\.(woff(2)?|ttf|eot|otf)$/,
           type: 'asset/resource',
           generator: {
             filename: 'font/[name][ext]',

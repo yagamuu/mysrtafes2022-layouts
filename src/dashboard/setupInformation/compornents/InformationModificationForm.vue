@@ -65,7 +65,7 @@ export default class InformationModificationForm extends Vue {
   }
 
   rules = [
-    (v: string):boolean | string => v.length <= 120 || '最大120字まで',
+    (v: string):boolean | string => v.length <= 170 || '最大170字まで',
     (v: string):boolean | string => v.length > 0 || '1文字以上入力して下さい',
   ];
 }

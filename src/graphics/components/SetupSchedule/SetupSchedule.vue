@@ -1,19 +1,19 @@
 <template>
-  <div class="schedule" :style="position">
+  <div id="schedule">
     <upnext-schedule-component :run-data="upnextRun"/>
     <ondeck-schedule-component
       v-for="(run, index) in ondeckRuns"
       :key="run.id"
       :run-data="run"
       :start-in="upcomingStartIn[index]"
+      :style="{top: 630 + 200 * index + 'px'}"
       />
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
-import { ComponentPosition } from '@mysrtafes2022-layouts/types/ComponentPosition';
 import type { RunData, RunDataArray } from '@mysrtafes2022-layouts/types/schemas/speedcontrol';
 import UpnextScheduleComponent from './UpnextSchedule.vue';
 import OndeckScheduleComponent from './OndeckSchedule.vue';
@@ -27,9 +27,6 @@ import * as util from '../../util/format';
 })
 export default class SetupSchedule extends Vue {
   @Getter readonly upcomingRuns!: RunDataArray;
-
-  @Prop({ type: Object, required: true })
-  readonly position!: ComponentPosition;
 
   get upnextRun(): RunData {
     return this.upcomingRuns[0];
@@ -61,11 +58,4 @@ export default class SetupSchedule extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '../../styles/setupLayout.scss';
-
-.schedule {
-  @include baseCompornent();
-  flex-direction: column;
-}
-
 </style>

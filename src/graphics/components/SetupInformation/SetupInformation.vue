@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-use-v-if-with-v-for -->
 <template>
-  <div>
+  <div class="description">
   <transition name="information" mode="out-in">
     <setup-information-text
       v-for="(information, index) in setupInformationArray"

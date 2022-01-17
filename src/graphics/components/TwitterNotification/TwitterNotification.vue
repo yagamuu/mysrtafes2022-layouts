@@ -1,17 +1,14 @@
 <template>
-  <transition name="twitter">
+  <div id="tweet" :class="isActive">
     <twitter-text-box
       v-if="activeTweetReplicant"
-      :position="position"
-      :tweet="activeTweetReplicant"
-      :line="line"/>
-  </transition>
+      :tweet="activeTweetReplicant"/>
+  </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
-import { ComponentPosition } from '@mysrtafes2022-layouts/types/ComponentPosition';
 import type { ActiveTweet } from '@mysrtafes2022-layouts/types/schemas/nodecgTwitterWidget';
 import TwitterTextBox from './TwitterTextBox.vue';
 
@@ -23,26 +20,23 @@ import TwitterTextBox from './TwitterTextBox.vue';
 export default class TwitterNotification extends Vue {
   @Getter readonly activeTweetReplicant!: ActiveTweet;
 
-  @Prop({ type: Object, required: true })
-  readonly position!: ComponentPosition;
-
-  @Prop({ type: Number, default: 3 })
-  readonly line!: number;
+  get isActive(): string {
+    return this.activeTweetReplicant ? 'active' : '';
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../styles/setupLayout.scss';
 
 .twitter-enter-active {
-  transition: all 1s;
+  transition: 0.4s ease;
 }
 
 .twitter-leave-active {
-  transition: all 1s;
+  transition: 0.4s ease;
 }
 
 .twitter-enter, .twitter-leave-to {
-  transform: translateY(-100%);
+  left: -10px;
 }
 </style>

@@ -1,5 +1,8 @@
 <template>
-  <div id="root" :style="{backgroundImage: `url(${backgroundUri})`, backgroundsize: 'cover'}">
+  <div
+    id="root"
+    :style="{backgroundImage: `url(${backgroundUri})`, backgroundsize: 'cover'}"
+  >
     <slot/>
   </div>
 </template>
@@ -15,7 +18,3 @@ export default class OverlayBase extends Vue {
   created(): void {}
 }
 </script>
-
-<style>
-  @import url('../styles/common.css');
-</style>
