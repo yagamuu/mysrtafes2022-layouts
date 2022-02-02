@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
 import { RunDataActiveRun, RunDataPlayer } from '@mysrtafes2022-layouts/types/schemas/speedcontrol/RunData';
 import { DisplaySound } from '@mysrtafes2022-layouts/types/schemas/displaySound';
@@ -25,7 +25,9 @@ export default class extends Vue {
   @Getter readonly runDataActiveRun!: RunDataActiveRun;
   @Getter readonly displaySound!: DisplaySound;
 
-  selected = '';
+  get selected(): string {
+    return this.displaySound?.playerId || '';
+  }
 
   get players(): RunDataPlayer[] {
     if (!this.runDataActiveRun) {
@@ -37,15 +39,6 @@ export default class extends Vue {
 
   changeDisplaySound(id: string): void {
     storeModule.changeDisplaySound(id);
-  }
-
-  @Watch('players')
-  onChangePlayers(): void {
-    this.selected = this.players[0].id || '';
-  }
-
-  mounted(): void {
-    this.selected = this.displaySound?.playerId || '';
   }
 }
 </script>

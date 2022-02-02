@@ -6,8 +6,8 @@ if (runDataActiveRunReplicant.value?.teams) {
   displaySoundReplicant.value.playerId = runDataActiveRunReplicant.value.teams[0].players[0].id;
 }
 
-runDataActiveRunReplicant.on('change', (newVal: RunDataActiveRun) => {
-  if (newVal?.teams) {
+runDataActiveRunReplicant.on('change', (newVal: RunDataActiveRun, oldVal: RunDataActiveRun) => {
+  if (newVal?.teams && oldVal?.id !== newVal.id) {
     displaySoundReplicant.value.playerId = newVal.teams[0].players[0].id;
   }
 });
