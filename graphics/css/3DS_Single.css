@@ -1,0 +1,422 @@
+.twitter-enter-active[data-v-999ffabe]{transition:.4s ease}.twitter-leave-active[data-v-999ffabe]{transition:.4s ease}.twitter-enter[data-v-999ffabe],.twitter-leave-to[data-v-999ffabe]{left:-10px}
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* reset CSS */
+
+@font-face {
+  font-family: "AkazukinPop";
+  src: url(../font/AkazukiPOP.otf);
+}
+
+body {
+  margin: 0;
+  font-size: 30px;
+  font-family: AkazukinPop;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+#logo {
+  width: 326px;
+  height: 326px;
+  margin-left: 46px;
+}
+
+#container {
+  position: relative;
+  mix-blend-mode: multiply;
+  transition: 10s;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 30px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+#container.setup {
+  box-shadow: none;
+}
+
+#twitter_head_icon {
+  width: 51px;
+  height: 41px;
+}
+
+#twitter_head {
+  color: rgb(3, 169, 244);
+  font-size: 30px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  margin-left: -9px;
+  position: absolute;
+  z-index: 1;
+}
+
+#twitter_head {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 20px;
+  width: 340px;
+  height: 68px;
+  background-color: #c3dafb;
+  border-radius: 5px;
+  position: relative;
+}
+
+#twitter_head:after {
+  content: "";
+  right: -19px;
+  top: 0;
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  width: 0px;
+  height: 0px;
+  border-right: 20px solid transparent;
+  border-bottom: 68px solid transparent;
+  border-left: 20px solid transparent;
+  border-top: 68px solid #c3dafb;
+  border-radius: 5px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(133, 113, 99);
+  color: #554433;
+  height: 50px;
+  padding: 10px;
+  z-index: 3;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+#tweet {
+  background-color: rgb(195, 218, 250);
+  color: #13b6ff;
+  position: absolute;
+  width: 460px;
+  height: 255px;
+  padding: 10px 10px 10px 20px;
+
+  border-radius: 8px;
+  left: -470px;
+  top: 325px;
+  font-size: 20px;
+  line-height: 29px;
+  z-index: 5;
+  transition: 0.4s ease;
+}
+
+#tweet.active {
+  left: -10px;
+}
+
+.canvas_area {
+  /* 文字等の情報埋め込み用のスペースに一時的に着色 */
+  background-color: red;
+  opacity: 0.5;
+}
+
+.info_box {
+  width: 446px;
+  height: 270px;
+  background-color: rgba(234, 225, 216, 0.6);
+  top: 270px;
+  left: 1330px;
+  position: absolute;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+#main .title_area {
+  background-color: rgba(234, 225, 216, 0.6);
+  color: rgb(55, 44, 33);
+  width: 1860px;
+  height: 136px;
+  padding: 10px 20px;
+  position: absolute;
+  border-radius: 5px;
+  z-index: 1;
+  top: 763px;
+  right: 30px;
+}
+
+#main .title {
+  font-size: 45px;
+  line-height: 70px;
+}
+#main .category {
+  font-size: 30px;
+  line-height: 50px;
+  padding-left: 35px;
+}
+
+.screen_area {
+  position: absolute;
+  height: 555px;
+  width: 925px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.screen_area .video {
+  height: 100%;
+  width: 100%;
+  background: #aaa;
+}
+
+.screen_area#screen_1 {
+  top: 279px;
+  left: 338px;
+  width: 612px;
+  height: 459px;
+}
+
+.screen_area#screen_2 {
+  left: 966px;
+  top: 183px;
+}
+
+.info_box_time {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 5px;
+  color: rgb(55, 44, 33);
+  position: absolute;
+  z-index: 1;
+
+  top: 919px;
+  left: 30px;
+  background-color: rgba(234, 225, 216, 0.6);
+  border-radius: 5px;
+  height: 91px;
+  width: 480px;
+}
+
+header {
+  flex-direction: row;
+}
+
+#logo {
+  margin-top: 10px;
+  width: 250px;
+  height: 250px;
+  margin-left: 60px;
+  margin-right: 30px;
+}
+
+#twitter_head {
+  margin-top: -3px;
+}
+
+#tweet {
+  background-color: rgb(195, 218, 250);
+  color: #13b6ff;
+  position: absolute;
+  width: 620px;
+  height: 255px;
+  padding: 10px 10px 10px 20px;
+
+  border-radius: 8px;
+  left: 330px;
+  top: -260px;
+  font-size: 20px;
+  line-height: 29px;
+  z-index: 5;
+  transition: 0.4s ease;
+}
+
+#tweet.active {
+  top: -5px;
+  left: 330px;
+}
+
+#runner_area_wrapper {
+  left: 530px;
+  top: 919px;
+  width: 1360px;
+  height: 91px;
+}
+
+span.runner_area {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+span.time_area {
+  width: 216px;
+  height: 64px;
+}
+
+#container .info-box.active {
+  background: rgb(255, 217, 0);
+}
+
+.time_area_wrapper {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  line-height: 40px;
+  font-size: 40px;
+  height: 100%;
+}
+
+.icon_timer {
+  height: 45px;
+  width: 45px;
+  margin-right: 15px;
+  margin-left: 25px;
+}
+
+.time {
+  margin-right: 15px;
+}
+
+
