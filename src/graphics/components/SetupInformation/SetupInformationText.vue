@@ -1,11 +1,11 @@
 <template>
-  <span class="informationText">{{information.text}}</span>
+  <span class="description_part">{{information.text}}</span>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
-import { SetupInformation } from '@mysrtafes2022-layouts/types/schemas/setupInformationArray';
+import { SetupInformation } from '@mysrtafes2022-layouts/types/schemas/setupInformation';
 
 @Component({
   components: {

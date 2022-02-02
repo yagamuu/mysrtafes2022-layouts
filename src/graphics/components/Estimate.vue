@@ -1,39 +1,38 @@
 <template>
-  <div class="runInformation" :style="position">
-    <span class="label">予定タイム</span>
-    <span class="estimate">{{estimate}}</span>
+  <div class="info_box_time">
+    <div class="time_area_wrapper">
+      <img src="../images/icon/icon_timer.svg" class="icon_timer" alt="timer">
+      <span class="time_area" v-if="displayTimer">{{time}}</span>
+    </div>
+    <span id="est" class="time">/ {{estimate}}</span>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { ComponentPosition } from '@mysrtafes2022-layouts/types/ComponentPosition';
+import { Getter } from 'vuex-class';
+import type { RunDataActiveRun, Timer } from '@mysrtafes2022-layouts/types/schemas/speedcontrol';
 import * as util from '@mysrtafes2022-layouts/graphics/util/format';
 
 @Component
 export default class Estimate extends Vue {
-  @Prop({ type: Object, required: true })
-  readonly position!: ComponentPosition;
+  @Getter readonly runDataActiveRunReplicant!: RunDataActiveRun;
+  @Getter readonly timerReplicant!: Timer;
 
-  @Prop({ type: Number, required: true })
-  readonly estimateS!: number;
+  @Prop({ type: Boolean, default: false })
+  readonly displayTimer!: boolean;
 
   get estimate(): string {
-    return util.formatSeconds(this.estimateS);
+    const estimateS = this.runDataActiveRunReplicant?.estimateS ?? 0;
+    return util.formatSeconds(estimateS);
+  }
+
+  get time(): string {
+    const { milliseconds } = this.timerReplicant;
+    return util.formatSeconds(Math.trunc(milliseconds / 1000));
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/gameLayout.scss';
-
-.runInformation {
-  @include runInformationCompornent();
-  justify-content: center;
-  align-items: center;
-}
-
-.label {
-  padding-right: 10px;
-}
 </style>

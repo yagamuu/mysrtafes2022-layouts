@@ -5,30 +5,30 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
+import { Getter } from 'vuex-class';
 import type { SpotifyPlayingTrack } from '@mysrtafes2022-layouts/types/schemas/nodecgSpotifyWidget';
 
 @Component({
 })
 export default class SpotifyTrack extends Vue {
-  @Prop({ type: Object, required: true })
-  readonly track!: SpotifyPlayingTrack;
+  @Getter readonly spotifyPlayingTrackReplicant!: SpotifyPlayingTrack;
 
   get trackName(): string {
-    if (!this.track) {
+    if (!this.spotifyPlayingTrackReplicant) {
       return '';
     }
-    return this.track?.name || '';
+    return this.spotifyPlayingTrackReplicant?.name || '';
   }
   get artists(): string {
-    return this.track?.artists.join(', ') || '';
+    return this.spotifyPlayingTrackReplicant?.artists.join(', ') || '';
   }
 
   get albumName(): string {
-    if (!this.track) {
+    if (!this.spotifyPlayingTrackReplicant) {
       return '';
     }
-    return this.track?.albumName || '';
+    return this.spotifyPlayingTrackReplicant?.albumName || '';
   }
 }
 </script>

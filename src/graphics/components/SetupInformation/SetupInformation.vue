@@ -1,13 +1,10 @@
-<!-- eslint-disable vue/no-use-v-if-with-v-for -->
 <template>
   <div class="description">
-  <transition name="information" mode="out-in">
     <setup-information-text
       v-for="(information, index) in setupInformationArray"
       :key="information.id"
       :information="information"
-      v-if="index === displaySetupInformation"/>
-  </transition>
+      :class="[index === displaySetupInformation ? 'active' : '']"/>
   </div>
 </template>
 
@@ -29,18 +26,4 @@ export default class SetupInformation extends Vue {
 </script>
 
 <style lang="scss" scoped>
-
-.information-enter-active {
-  transition: all 1s 1s;
-}
-
-.information-leave-active {
-  transition: all 1s;
-}
-
-.information-enter, .information-leave-to {
-  transform: translateX(-20px);
-  opacity: 0;
-}
-
 </style>

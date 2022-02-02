@@ -29,7 +29,7 @@ export default class OndeckSchedule extends Vue {
 
   get runners(): string {
     // eslint-disable-next-line max-len
-    return this.runData.teams.flatMap((team) => team.players.flatMap((player) => player.name)).join('、');
+    return this.runData.teams.flatMap((team) => team.players.flatMap((player) => player.name)).join(', ');
   }
 }
 </script>

@@ -5,7 +5,7 @@ export const formatSeconds = (baseSeconds: number): string => {
 
   const zeroPadding = (num: number): string => num.toString().padStart(2, '0');
 
-  return `${hours ? `${hours}:` : ''}${zeroPadding(minutes)}:${zeroPadding(seconds)}`;
+  return `${hours}:${zeroPadding(minutes)}:${zeroPadding(seconds)}`;
 };
 
 export const formatSecondsToStartInTime = (baseSeconds: number): string => {

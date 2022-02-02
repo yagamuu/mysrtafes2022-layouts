@@ -1,0 +1,100 @@
+.info_box {
+  width: 420px;
+  height: 250px;
+  background-color: rgba(234, 225, 216, 0.6);
+  margin-top: 600px;
+  margin-left: 40px;
+  position: absolute;
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.info_box_time {
+  width: 420px;
+  height: 140px;
+  background-color: rgba(234, 225, 216, 0.6);
+  border-radius: 5px;
+  top: 870px;
+  left: 40px;
+  color: rgb(55, 44, 33);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+}
+
+#main .title_area {
+  background-color: rgba(234, 225, 216, 0.6);
+  border-radius: 5px;
+  color: rgb(55, 44, 33);
+  width: 1400px;
+  height: 172px;
+  padding: 5px 20px;
+  position: absolute;
+  z-index: 1;
+  top: 30px;
+  right: 40px;
+}
+
+#main .title {
+  font-size: 45px;
+  line-height: 60px;
+}
+
+.screen_area {
+  top: 222px;
+  left: 480px;
+  position: absolute;
+  height: 789px;
+  width: 1400px;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.screen_area .video {
+  width: 1050px;
+  height: 100%;
+  background: #aaa;
+}
+
+.screen_area .video.size_16x9 {
+  width: 100%;
+}
+
+.category {
+  padding-left: 45px;
+}
+
+.time_area {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 40px);
+  display: block;
+}
+
+.info_box .canvas_area {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.icon_timer {
+  position: absolute;
+  left: 20px;
+  top: 30px;
+  height: 50px;
+  width: 50px;
+}
+
+.canvas_area.time_area {
+  width: calc(100% - 90px);
+  right: 10px;
+  top: 10px;
+  left: auto;
+  height: calc(100% - 50px);
+}

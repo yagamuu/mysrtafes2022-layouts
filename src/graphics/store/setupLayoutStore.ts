@@ -3,9 +3,8 @@ import Vue from 'vue';
 import Vuex, { Store } from 'vuex';
 import { getModule, Module, VuexModule, Mutation, Action } from 'vuex-module-decorators';
 import type { SpotifyPlayingTrack } from '@mysrtafes2022-layouts/types/schemas/nodecgSpotifyWidget';
-import type { RunDataArray } from '@mysrtafes2022-layouts/types/schemas/speedcontrol';
+import type { RunDataArray, RunDataActiveRunSurrounding } from '@mysrtafes2022-layouts/types/schemas/speedcontrol';
 import type { ActiveTweet } from '@mysrtafes2022-layouts/types/schemas/nodecgTwitterWidget';
-import type { SpeedcontrolCurrentRunIndex } from '@mysrtafes2022-layouts/types/schemas/speedcontrolAdditions';
 import { SetupInformationArray } from '@mysrtafes2022-layouts/types/schemas/setupInformationArray';
 import type { Assets } from '@mysrtafes2022-layouts/types/schemas/assets';
 
@@ -31,12 +30,19 @@ class SetupLayoutModule extends VuexModule {
     return this.reps.runDataArrayReplicant;
   }
 
-  get speedcontrolCurrentRunIndexReplicant(): SpeedcontrolCurrentRunIndex {
-    return this.reps.speedcontrolCurrentRunIndexReplicant;
+  get runDataActiveRunSurroundingReplicant(): RunDataActiveRunSurrounding {
+    return this.reps.runDataActiveRunSurroundingReplicant;
+  }
+
+  get speedcontrolActiveRunIndex(): number {
+    const activeRunIndex = this.runDataArrayReplicant.findIndex(
+      (runData) => runData.id === this.runDataActiveRunSurroundingReplicant.current,
+    );
+    return activeRunIndex;
   }
 
   get upcomingRuns(): RunDataArray {
-    const index = this.speedcontrolCurrentRunIndexReplicant || 0;
+    const index = this.speedcontrolActiveRunIndex || 0;
     return this.runDataArrayReplicant.slice(index, index + 3);
   }
 

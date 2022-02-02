@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
-import type { RunDataArray, Timer } from '@mysrtafes2022-layouts/types/schemas/speedcontrol';
-import type { SpeedcontrolCurrentRunIndex, SpeedcontrolUserAdditionArray, CommentatorArray } from '@mysrtafes2022-layouts/types/schemas/speedcontrolAdditions';
+import type { RunDataArray, RunDataActiveRun, RunDataActiveRunSurrounding, Timer } from '@mysrtafes2022-layouts/types/schemas/speedcontrol';
 import type { SpotifyPlayingTrack } from '@mysrtafes2022-layouts/types/schemas/nodecgSpotifyWidget';
 import { SetupInformationArray } from '@mysrtafes2022-layouts/types/schemas/setupInformationArray';
+import { DisplaySound } from '@mysrtafes2022-layouts/types/schemas/displaySound';
 import type { ActiveTweet } from '@mysrtafes2022-layouts/types/schemas/nodecgTwitterWidget';
 import type { Assets } from '@mysrtafes2022-layouts/types/schemas/assets';
 import clone from 'clone';
@@ -15,26 +15,26 @@ import { getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators'
 // Declaring replicants.
 export const reps: {
   runDataArrayReplicant: ReplicantBrowser<RunDataArray>;
+  runDataActiveRunReplicant: ReplicantBrowser<RunDataActiveRun>;
+  runDataActiveRunSurroundingReplicant: ReplicantBrowser<RunDataActiveRunSurrounding>;
   timerReplicant: ReplicantBrowser<Timer>;
-  speedcontrolCurrentRunIndexReplicant: ReplicantBrowser<SpeedcontrolCurrentRunIndex>;
-  speedcontrolUserAdditionArrayReplicant: ReplicantBrowser<SpeedcontrolUserAdditionArray>;
-  commentatorArrayReplicant: ReplicantBrowser<CommentatorArray>;
   spotifyPlayingTrackReplicant: ReplicantBrowser<SpotifyPlayingTrack>;
   activeTweetReplicant: ReplicantBrowser<ActiveTweet>;
   setupInformationArrayReplicant: ReplicantBrowser<SetupInformationArray>;
+  displaySoundReplicant: ReplicantBrowser<DisplaySound>;
   gameLayoutBgAssetsReplicant: ReplicantBrowser<Assets>;
   setupLayoutBgAssetsReplicant: ReplicantBrowser<Assets>;
   logoAssetsReplicant: ReplicantBrowser<Assets>;
   [k: string]: ReplicantBrowser<unknown>;
 } = {
   runDataArrayReplicant: nodecg.Replicant('runDataArray', 'nodecg-speedcontrol'),
+  runDataActiveRunReplicant: nodecg.Replicant('runDataActiveRun', 'nodecg-speedcontrol'),
+  runDataActiveRunSurroundingReplicant: nodecg.Replicant('runDataActiveRunSurrounding', 'nodecg-speedcontrol'),
   timerReplicant: nodecg.Replicant('timer', 'nodecg-speedcontrol'),
-  speedcontrolCurrentRunIndexReplicant: nodecg.Replicant('speedcontrolCurrentRunIndex', 'speedcontrol-additions'),
-  speedcontrolUserAdditionArrayReplicant: nodecg.Replicant('speedcontrolUserAdditionArray', 'speedcontrol-additions'),
-  commentatorArrayReplicant: nodecg.Replicant('commentatorArray', 'speedcontrol-additions'),
   spotifyPlayingTrackReplicant: nodecg.Replicant('spotifyPlayingTrack', 'nodecg-spotify-widget'),
   activeTweetReplicant: nodecg.Replicant('activeTweet', 'nodecg-twitter-widget'),
   setupInformationArrayReplicant: nodecg.Replicant('setupInformationArray'),
+  displaySoundReplicant: nodecg.Replicant('displaySound'),
   gameLayoutBgAssetsReplicant: nodecg.Replicant('assets:gameLayoutBg'),
   setupLayoutBgAssetsReplicant: nodecg.Replicant('assets:setupLayoutBg'),
   logoAssetsReplicant: nodecg.Replicant('assets:logo'),
@@ -43,13 +43,13 @@ export const reps: {
 // All the replicant types.
 export interface ReplicantTypes {
   runDataArrayReplicant: RunDataArray;
+  runDataActiveRunReplicant: RunDataActiveRun;
+  runDataActiveRunSurroundingReplicant: RunDataActiveRunSurrounding;
   timerReplicant: Timer;
-  speedcontrolCurrentRunIndexReplicant: SpeedcontrolCurrentRunIndex;
-  speedcontrolUserAdditionArrayReplicant: SpeedcontrolUserAdditionArray;
-  commentatorArrayReplicant: CommentatorArray;
   spotifyPlayingTrackReplicant: SpotifyPlayingTrack;
   activeTweetReplicant: ActiveTweet;
   setupInformationArrayReplicant: SetupInformationArray;
+  displaySoundReplicant: DisplaySound;
   gameLayoutBgAssetsReplicant: Assets;
   setupLayoutBgAssetsReplicant: Assets;
   logoAssetsReplicant: Assets;

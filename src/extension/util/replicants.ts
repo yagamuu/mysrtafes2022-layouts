@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 
-import type { SetupInformationArray } from '@mysrtafes2022-layouts/types/schemas';
+import type { SetupInformationArray, DisplaySound } from '@mysrtafes2022-layouts/types/schemas';
+import type { RunDataActiveRun } from '@mysrtafes2022-layouts/types/schemas/speedcontrol';
 import { get as nodecg } from './nodecg';
 
 /**
@@ -13,3 +14,11 @@ import { get as nodecg } from './nodecg';
 export const informationArrayReplicant = nodecg().Replicant<SetupInformationArray>('setupInformationArray', {
   defaultValue: [],
 });
+
+export const displaySoundReplicant = nodecg().Replicant<DisplaySound>('displaySound', {
+  defaultValue: {
+    playerId: '',
+  },
+});
+
+export const runDataActiveRunReplicant = nodecg().Replicant<RunDataActiveRun>('runDataActiveRun', 'nodecg-speedcontrol');

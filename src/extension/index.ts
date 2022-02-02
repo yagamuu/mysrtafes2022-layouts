@@ -15,4 +15,5 @@ export = (nodecg: NodeCG): void => {
    */
   set(nodecg);
   require('./information');
+  require('./displaySound');
 };

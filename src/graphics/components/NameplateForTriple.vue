@@ -1,12 +1,15 @@
 <template>
   <div class="info_box" :class="{ active: isActive }">
-    <div class="player_name">
-      <img src="../images/icon/icon_cont.svg" class="icon_cont" alt="cont">
-      <span class="runner_area">{{name}}</span>
-    </div>
-    <div class="player_time">
-      <img src="../images/icon/icon_speaker.svg" class="icon_speaker" alt="speaker">
-      <span id="player1_time" class="player_time_area active">{{finishTime}}</span>
+    <div class="info_box_inner">
+      <div class="player_name">
+        <img src="../images/icon/icon_cont.svg" class="icon_cont" alt="cont">
+        <span class="runner_area">{{name}}</span>
+      </div>
+      <div class="player_time">
+        <span id="player1_time" class="player_time_area active">{{finishTime}}</span>
+        <img src="../images/icon/icon_speaker.svg" class="icon_speaker" alt="speaker">
+      </div>
+      <div :id="'player_' + (index + 1)  + '_end'"/>
     </div>
   </div>
 </template>
@@ -20,7 +23,7 @@ import { DisplaySound } from '@mysrtafes2022-layouts/types/schemas/displaySound'
 import * as util from '@mysrtafes2022-layouts/graphics/util/format';
 
 @Component
-export default class Nameplate extends Vue {
+export default class NameplateForTriple extends Vue {
   @Getter readonly runDataActiveRunReplicant!: RunDataActiveRun;
   @Getter readonly timerReplicant!: Timer;
   @Getter readonly displaySoundReplicant!: DisplaySound;

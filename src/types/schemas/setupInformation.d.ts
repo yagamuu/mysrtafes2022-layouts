@@ -8,5 +8,5 @@
 export interface SetupInformation {
 	id: string;
 	text: string;
-	[k: string]: any;
+	[k: string]: unknown;
 }

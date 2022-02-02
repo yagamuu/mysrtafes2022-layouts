@@ -84,7 +84,6 @@
     "compatibleRange": "^1.8.1",
     "bundleDependencies": {
       "nodecg-speedcontrol": "^2.4.0",
-      "speedcontrol-additions": "^0.9.0",
       "nodecg-twitter-widget": "^0.9.0",
       "nodecg-spotify-widget": "^0.9.0"
     },
@@ -93,7 +92,8 @@
         "name": "setupInformation",
         "title": "Setup Information",
         "file": "setupInformation.html",
-        "width": 3
+        "width": 3,
+        "workspace": "MysRTAFesSettings"
       },
       {
         "name": "alertDialog",
@@ -101,16 +101,43 @@
         "width": 3,
         "file": "alertDialog.html",
         "dialog": true
+      },
+      {
+        "name": "displaySound",
+        "title": "Display Sound",
+        "file": "displaySound.html",
+        "width": 3,
+        "workspace": "MysRTAFesSettings"
       }
     ],
     "graphics": [
       {
-        "file": "SD_1.html",
+        "file": "Single.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "SD_3.html",
+        "file": "DS_Single.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "3DS_Single.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "Double.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "Triple.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "Triple_Pickup.html",
         "width": 1920,
         "height": 1080
       },

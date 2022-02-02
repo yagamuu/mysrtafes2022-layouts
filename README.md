@@ -11,3 +11,6 @@ This is the [NodeCG](http://github.com/nodecg/nodecg) bundle used for the stream
 - [speedcontrol-additions](https://github.com/cma2819/speedcontrol-additions): NodeCG layout bundle for adding information to nodecg-speedcontrol.
 - [nodecg-twitter-widget](https://github.com/cma2819/nodecg-twitter-widget): NodeCG layout bundle for showing tweet.
 - [nodecg-spotify-widget](https://github.com/cma2819/nodecg-spotify-widget): NodeCG layout bundle for showing spotify information.
+- [BOBSON](https://twitter.com/BOBSON27): Graphics design.
+- [bear](https://twitter.com/bearfaust0123): HTML/CSS coding.
+- [isuZu](https://twitter.com/y_isuZu): Marathon Logo, Setup background illust.
