@@ -1,5 +1,5 @@
 <template>
-  <overlay-base :backgroundUri="backgroundUri">
+  <overlay-base :backgroundAssets="setupLayoutBgAssets">
     <p id="next_is"><span id="next_is_text">このあとは…</span></p>
     <div id="main">
       <setup-schedule/>
@@ -29,10 +29,6 @@ import TwitterNotification from '../components/TwitterNotification/TwitterNotifi
 })
 export default class extends Vue {
   @Getter readonly setupLayoutBgAssets!: Assets;
-
-  get backgroundUri(): string {
-    return this.setupLayoutBgAssets[0]?.url ?? '';
-  }
 
   created(): void {
     setInterval(() => {

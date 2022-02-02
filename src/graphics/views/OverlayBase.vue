@@ -28,8 +28,8 @@ import type { Assets } from '@mysrtafes2022-layouts/types/schemas/assets';
 export default class OverlayBase extends Vue {
   @Getter readonly logoAssets!: Assets;
 
-  @Prop({ type: String, default: '' })
-  readonly backgroundUri!: string;
+  @Prop({ type: Array, default: [] })
+  readonly backgroundAssets!: Assets;
 
   @Prop({ type: String, default: '' })
   readonly clipPath!: string;
@@ -41,7 +41,16 @@ export default class OverlayBase extends Vue {
   }
 
   get style(): object {
-    const uri = this.backgroundUri ? `url(${this.backgroundUri})` : '';
+    let backgroundUri = this.backgroundAssets[0]?.url || '';
+    const hour = this.date.getHours();
+
+    if ((hour >= 15 && hour < 19) && this.backgroundAssets[1]) {
+      backgroundUri = this.backgroundAssets[1]?.url;
+    } else if ((hour >= 19 || hour < 6) && this.backgroundAssets[2]) {
+      backgroundUri = this.backgroundAssets[2]?.url;
+    }
+
+    const uri = backgroundUri ? `url(${backgroundUri})` : '';
     const clip = this.clipPath ? `polygon(${this.clipPath})` : '';
     return {
       backgroundImage: uri,
