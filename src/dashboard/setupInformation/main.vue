@@ -12,14 +12,6 @@
         >
           Add Information
         </v-btn>
-        <v-btn
-          class="my-2"
-          block
-          color="error"
-          @click="overwriteConfirm"
-        >
-          Overwrite Information(Game start soon)
-        </v-btn>
         <div :style="{height: '480px',overflowY: 'scroll'}">
           <information-list/>
         </div>
@@ -30,12 +22,10 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import type { Alert } from '@mysrtafes2022-layouts/types';
 import { storeModule, transitionStatus } from './store';
 import InformationCreationForm from './compornents/InformationCreationForm.vue';
 import InformationModificationForm from './compornents/InformationModificationForm.vue';
 import InformationList from './compornents/InformationList.vue';
-import { getDialog } from '../_misc/helpers';
 
 @Component({
   components: {
@@ -55,26 +45,6 @@ export default class extends Vue {
 
   openCreationForm(): void {
     storeModule.transitionToCreation();
-  }
-
-  overwriteConfirm(): void {
-    const dialog = getDialog('alertDialog') as Alert.Dialog;
-    if (dialog) {
-      dialog.openDialog({
-        name: 'OverwriteInformationConfirm',
-        func: this.overwrite,
-      });
-    }
-  }
-
-  async overwrite(confirm: boolean): Promise<void> {
-    if (confirm) {
-      try {
-        await nodecg.sendMessage('overwriteInformation');
-      } catch (err) {
-        // run removal unsuccessful
-      }
-    }
   }
 }
 </script>

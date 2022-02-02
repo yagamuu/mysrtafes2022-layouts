@@ -3,6 +3,7 @@ import type { RunDataArray, RunDataActiveRun, RunDataActiveRunSurrounding, Timer
 import type { SpotifyPlayingTrack } from '@mysrtafes2022-layouts/types/schemas/nodecgSpotifyWidget';
 import { SetupInformationArray } from '@mysrtafes2022-layouts/types/schemas/setupInformationArray';
 import { DisplaySound } from '@mysrtafes2022-layouts/types/schemas/displaySound';
+import { StartSoon } from '@mysrtafes2022-layouts/types/schemas/startSoon';
 import type { ActiveTweet } from '@mysrtafes2022-layouts/types/schemas/nodecgTwitterWidget';
 import type { Assets } from '@mysrtafes2022-layouts/types/schemas/assets';
 import clone from 'clone';
@@ -22,6 +23,7 @@ export const reps: {
   activeTweetReplicant: ReplicantBrowser<ActiveTweet>;
   setupInformationArrayReplicant: ReplicantBrowser<SetupInformationArray>;
   displaySoundReplicant: ReplicantBrowser<DisplaySound>;
+  startSoonReplicant: ReplicantBrowser<StartSoon>;
   gameLayoutBgAssetsReplicant: ReplicantBrowser<Assets>;
   setupLayoutBgAssetsReplicant: ReplicantBrowser<Assets>;
   logoAssetsReplicant: ReplicantBrowser<Assets>;
@@ -35,6 +37,7 @@ export const reps: {
   activeTweetReplicant: nodecg.Replicant('activeTweet', 'nodecg-twitter-widget'),
   setupInformationArrayReplicant: nodecg.Replicant('setupInformationArray'),
   displaySoundReplicant: nodecg.Replicant('displaySound'),
+  startSoonReplicant: nodecg.Replicant('startSoon'),
   gameLayoutBgAssetsReplicant: nodecg.Replicant('assets:gameLayoutBg'),
   setupLayoutBgAssetsReplicant: nodecg.Replicant('assets:setupLayoutBg'),
   logoAssetsReplicant: nodecg.Replicant('assets:logo'),
@@ -50,6 +53,7 @@ export interface ReplicantTypes {
   activeTweetReplicant: ActiveTweet;
   setupInformationArrayReplicant: SetupInformationArray;
   displaySoundReplicant: DisplaySound;
+  startSoonReplicant: StartSoon;
   gameLayoutBgAssetsReplicant: Assets;
   setupLayoutBgAssetsReplicant: Assets;
   logoAssetsReplicant: Assets;

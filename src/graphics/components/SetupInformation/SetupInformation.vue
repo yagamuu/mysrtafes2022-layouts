@@ -4,7 +4,10 @@
       v-for="(information, index) in setupInformationArray"
       :key="information.id"
       :information="information"
-      :class="[index === displaySetupInformation ? 'active' : '']"/>
+      :class="[index === displaySetupInformation && !startSoonReplicant ? 'active' : '']"/>
+    <span class="description_part_alert" :class="[startSoonReplicant ? 'active' : '']">
+      まもなく開始します
+    </span>
   </div>
 </template>
 
@@ -12,6 +15,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
 import { SetupInformationArray } from '@mysrtafes2022-layouts/types/schemas/setupInformationArray';
+import { StartSoon } from '@mysrtafes2022-layouts/types/schemas/startSoon';
 import SetupInformationText from './SetupInformationText.vue';
 
 @Component({
@@ -22,6 +26,7 @@ import SetupInformationText from './SetupInformationText.vue';
 export default class SetupInformation extends Vue {
   @Getter readonly setupInformationArray!: SetupInformationArray;
   @Getter readonly displaySetupInformation!: number;
+  @Getter readonly startSoonReplicant!: StartSoon;
 }
 </script>
 

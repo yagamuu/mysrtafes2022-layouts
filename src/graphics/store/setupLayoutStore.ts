@@ -6,6 +6,7 @@ import type { SpotifyPlayingTrack } from '@mysrtafes2022-layouts/types/schemas/n
 import type { RunDataArray, RunDataActiveRunSurrounding } from '@mysrtafes2022-layouts/types/schemas/speedcontrol';
 import type { ActiveTweet } from '@mysrtafes2022-layouts/types/schemas/nodecgTwitterWidget';
 import { SetupInformationArray } from '@mysrtafes2022-layouts/types/schemas/setupInformationArray';
+import { StartSoon } from '@mysrtafes2022-layouts/types/schemas/startSoon';
 import type { Assets } from '@mysrtafes2022-layouts/types/schemas/assets';
 
 Vue.use(Vuex);
@@ -52,6 +53,10 @@ class SetupLayoutModule extends VuexModule {
 
   get setupInformationArray(): SetupInformationArray {
     return this.reps.setupInformationArrayReplicant;
+  }
+
+  get startSoonReplicant(): StartSoon {
+    return this.reps.startSoonReplicant;
   }
 
   get setupLayoutBgAssets(): Assets {

@@ -7,7 +7,7 @@
         :key="player.id"
         :value="player.id"
         @change="changeDisplaySound(player.id)"/>
-      </v-radio-group>
+    </v-radio-group>
   </v-app>
 </template>
 
