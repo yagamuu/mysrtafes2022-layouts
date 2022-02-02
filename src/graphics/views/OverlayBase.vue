@@ -5,7 +5,7 @@
     :style="style"
   >
     <header>
-      <img id="logo" src="../images/logo/logo.png" alt="logo">
+      <img id="logo" :src="logoUri" alt="logo">
       <div id="twitter_head">
         <img id="twitter_head_icon" src="../images/icon/icon_twitter.svg" alt="twitter_head_icon">
         <span>#不思議RTAフェス</span>
@@ -21,9 +21,13 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Getter } from 'vuex-class';
+import type { Assets } from '@mysrtafes2022-layouts/types/schemas/assets';
 
 @Component
 export default class OverlayBase extends Vue {
+  @Getter readonly logoAssets!: Assets;
+
   @Prop({ type: String, default: '' })
   readonly backgroundUri!: string;
 
@@ -31,6 +35,10 @@ export default class OverlayBase extends Vue {
   readonly clipPath!: string;
 
   date = new Date();
+
+  get logoUri(): string {
+    return this.logoAssets[0]?.url || '';
+  }
 
   get style(): object {
     const uri = this.backgroundUri ? `url(${this.backgroundUri})` : '';
