@@ -1,5 +1,5 @@
 <template>
-  <overlay-base :backgroundAssets="setupLayoutBgAssets">
+  <overlay-base :backgroundAssets="setupLayoutBgAssets" backgroundType="setup">
     <p id="next_is"><span id="next_is_text">このあとは…</span></p>
     <div id="main">
       <setup-schedule/>

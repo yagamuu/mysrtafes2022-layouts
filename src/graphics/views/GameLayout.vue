@@ -1,5 +1,5 @@
 <template>
-  <overlay-base :clipPath="clipPath" :backgroundAssets="gameLayoutBgAssets">
+  <overlay-base :clipPath="clipPath" :backgroundAssets="gameLayoutBgAssets" backgroundType="game">
     <slot/>
   </overlay-base>
 </template>

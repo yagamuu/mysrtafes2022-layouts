@@ -23,6 +23,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
 import type { Assets } from '@mysrtafes2022-layouts/types/schemas/assets';
+import type { Configschema } from '@mysrtafes2022-layouts/types/schemas/configschema';
 
 @Component
 export default class OverlayBase extends Vue {
@@ -31,8 +32,13 @@ export default class OverlayBase extends Vue {
   @Prop({ type: Array, default: [] })
   readonly backgroundAssets!: Assets;
 
+  @Prop({ type: String, default: 'setup' })
+  readonly backgroundType!: 'game' | 'setup';
+
   @Prop({ type: String, default: '' })
   readonly clipPath!: string;
+
+  config = nodecg.bundleConfig as Configschema;
 
   date = new Date();
 
@@ -41,13 +47,32 @@ export default class OverlayBase extends Vue {
   }
 
   get style(): object {
-    let backgroundUri = this.backgroundAssets[0]?.url || '';
+    const morning = this.backgroundAssets.find(
+      (asset) => (
+        asset.name === (this.backgroundType === 'game'
+          ? this.config.gameLayoutBackgroundImage.morning
+          : this.config.setupLayoutBackgroundImage.morning)),
+    );
+    const evening = this.backgroundAssets.find(
+      (asset) => (
+        asset.name === (this.backgroundType === 'game'
+          ? this.config.gameLayoutBackgroundImage.evening
+          : this.config.setupLayoutBackgroundImage.evening)),
+    );
+    const night = this.backgroundAssets.find(
+      (asset) => (
+        asset.name === (this.backgroundType === 'game'
+          ? this.config.gameLayoutBackgroundImage.night
+          : this.config.setupLayoutBackgroundImage.night)),
+    );
+
+    let backgroundUri = morning?.url || this.backgroundAssets[0]?.url || '';
     const hour = this.date.getHours();
 
-    if ((hour >= 15 && hour < 19) && this.backgroundAssets[1]) {
-      backgroundUri = this.backgroundAssets[1]?.url;
-    } else if ((hour >= 19 || hour < 6) && this.backgroundAssets[2]) {
-      backgroundUri = this.backgroundAssets[2]?.url;
+    if ((hour >= 15 && hour < 19) && evening) {
+      backgroundUri = evening?.url;
+    } else if ((hour >= 19 || hour < 6) && night) {
+      backgroundUri = night?.url;
     }
 
     const uri = backgroundUri ? `url(${backgroundUri})` : '';
