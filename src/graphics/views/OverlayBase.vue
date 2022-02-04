@@ -67,11 +67,11 @@ export default class OverlayBase extends Vue {
     );
 
     let backgroundUri = morning?.url || this.backgroundAssets[0]?.url || '';
-    const hour = this.date.getHours();
+    const interval = this.date.getMinutes() % 30;
 
-    if ((hour >= 15 && hour < 19) && evening) {
+    if ((interval >= 10 && interval < 20) && evening) {
       backgroundUri = evening?.url;
-    } else if ((hour >= 19 || hour < 6) && night) {
+    } else if ((interval >= 20) && night) {
       backgroundUri = night?.url;
     }
 
