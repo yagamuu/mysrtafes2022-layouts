@@ -16,6 +16,10 @@
       <span>本イベントはRTA in Japanのチャンネル貸し出しシステムを利用した外部のRTAイベントです</span>
       <span id="JST_area">{{nowDate}}</span>
     </footer>
+    <img v-for="(asset) in backgroundAssets"
+      :key="asset.base"
+      :src="asset.url"
+      v-show="false">
   </div>
 </template>
 
