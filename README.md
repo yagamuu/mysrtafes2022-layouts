@@ -3,6 +3,11 @@
 This is the [NodeCG](http://github.com/nodecg/nodecg) bundle used for the streaming overlay in Mystery Dungeon RTA FES 3.  
 
 ## Installation
+- `Docker`、`Docker Compose`のインストールを行う
+- プロジェクトディレクトリに`/cfg`ディレクトリを作成し、各種bundle用の設定jsonファイルを配置
+    - 当bundleは規定の時刻ごとに背景画像を変更する機能が存在し、背景画像のファイル名を設定ファイルから設定する必要があります
+    - プロパティ名などは`configschema.json`から確認してください
+- Docker Compose上でビルド、起動を行う(例:`docker-compose up -d`)
 
 ## Credits
 - [NodeCG](https://github.com/nodecg/nodecg): Main framework.
